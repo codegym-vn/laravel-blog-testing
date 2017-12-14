@@ -11,7 +11,7 @@ pipeline {
     stage('Test') {
       steps {
         sh 'docker -v'
-        sh 'printenv'
+        sh 'docker run -v $PWD:/root/src binhsonnguyen/sonarqube-scanner'
       }
     }
   }
