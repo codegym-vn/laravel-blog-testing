@@ -14,7 +14,7 @@ pipeline {
         sh 'pwd'
         sh 'ls'
         sh 'ping -c4 scrumlab.agilead.vn'
-        sh 'docker run -v $(pwd):/root/src binhsonnguyen/sonarqube-scanner'
+        sh 'sonar-scanner -Dsonar.projectBaseDir=$(pwd)'
       }
     }
   }
