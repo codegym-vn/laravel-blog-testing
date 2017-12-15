@@ -13,6 +13,7 @@ pipeline {
         sh 'docker -v'
         sh 'pwd'
         sh 'ls'
+        sh 'ping http://scrumlab.agilead.vn'
         sh 'docker run -v $PWD:/root/src binhsonnguyen/sonarqube-scanner'
       }
     }
