@@ -1,5 +1,7 @@
 pipeline {
-  agent any
+  agent {
+    docker { image 'docker:rc' }
+  }
 
   environment {
     QUALITY_CHECK = 'true'
@@ -19,7 +21,7 @@ pipeline {
 
     stage('Quality Check') {
       steps {
-        sh 'sonar-scanner -Dsonar.projectBaseDir=$(pwd)'
+        sh 'docker run -v $(pwd):/root/src binhsonnguyen/sonarqube-scanner'
       }
     }
   }
