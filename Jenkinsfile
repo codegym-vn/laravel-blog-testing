@@ -20,7 +20,7 @@ pipeline {
 
     stage('Quality Check') {
       steps {
-        sh 'docker run --rm -v $(pwd):/root/src binhsonnguyen/sonarqube-scanner:latest'
+        sh 'docker run --rm --user root -v $(pwd):/root/src binhsonnguyen/sonarqube-scanner:latest'
         sh 'cat .scannerwork/report-task.txt'
       }
     }
