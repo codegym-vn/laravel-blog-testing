@@ -13,7 +13,7 @@ pipeline {
         sh 'printenv'
         sh 'docker -v'
         sh 'pwd'
-        sh 'ls'
+        sh 'ls -lha'
         sh 'ping -c4 scrumlab.agilead.vn'
       }
     }
