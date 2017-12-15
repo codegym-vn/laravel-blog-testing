@@ -1,6 +1,6 @@
 pipeline {
   agent {
-    docker { image 'docker:rc' }
+    any
   }
 
   environment {
