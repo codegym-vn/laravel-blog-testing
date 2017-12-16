@@ -1,7 +1,5 @@
 pipeline {
-  agent {
-    docker { image 'docker:rc' }
-  }
+  agent any
 
   environment {
     QUALITY_CHECK = 'true'
@@ -21,7 +19,7 @@ pipeline {
     stage('Quality Check') {
       steps {
         sh 'ls $(pwd)'
-        sh 'docker run --rm --user root -v $(pwd):/root/src binhsonnguyen/sonarqube-scanner:1.0.3-alpha-3'
+        sh 'docker run --rm -v $(pwd):/root/src binhsonnguyen/sonarqube-scanner:1.0.3-alpha-3'
         sh 'cat .scannerwork/report-task.txt'
       }
     }
