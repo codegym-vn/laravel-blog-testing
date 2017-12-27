@@ -19,6 +19,7 @@ pipeline {
     stage('Quality Check') {
       steps {
         sh 'ls -la $(pwd)'
+        sh 'touch .foo'
         sh 'docker run --rm -v $(pwd):/root/src binhsonnguyen/sonarqube-scanner:1.0.3-alpha-3'
         sh 'cat .scannerwork/report-task.txt'
       }
@@ -28,7 +29,6 @@ pipeline {
   post {
     always {
       echo 'POST: clean up our workspace'
-      deleteDir()
     }
     success {
       echo 'POST: success'
