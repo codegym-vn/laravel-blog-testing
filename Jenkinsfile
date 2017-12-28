@@ -3,13 +3,13 @@ pipeline {
     docker {
       image 'docker:latest'
     }
+    
   }
   stages {
-    stage('Quality Check') {
+    stage('sona') {
       steps {
-        sh 'ls -la $(pwd)'
-        sh 'docker run --rm -v $(pwd):/root/src binhsonnguyen/sonarqube-scanner:1.0.3-alpha-3'
-       }
+        waitForQualityGate()
+      }
     }
   }
 }
